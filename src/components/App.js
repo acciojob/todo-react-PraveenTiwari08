@@ -21,14 +21,14 @@ const App = () => {
   }
   
   const todoAddInLi = Todos.map((value,index)=>{
-      return <><li key={index}>{value} <button  onClick={() =>Delete(value)}>Delete Todo</button></li>
-      </>
+      return <li key={index}>{value} <button  onClick={() =>Delete(value)}>Delete</button></li>
   })
+
   return (
     <div>
        <h1>todo-list</h1>
        <input value={inputValue} onChange={inputvalue}/>
-       <button onClick={addTodo}>Add Task</button>
+       <button onClick={addTodo}>Add Todo</button>
        <ul>
         <li>
           {todoAddInLi}
