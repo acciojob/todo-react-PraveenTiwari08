@@ -14,9 +14,15 @@ const App = () => {
     setTodos([...Todos,inputValue])
     setInputValue("");
   }
+
+  const Delete = () =>{
+    const Remove = Todos.splice(index,1);
+    setTodos([...Todos]);
+  }
   
   const todoAddInLi = Todos.map((value,index)=>{
-      return <div><li>{value}</li></div>
+      return <div><li>{value}</li>
+      <button key={index} onClick={Delete}>Delete Todo</button></div>
   })
   return (
     <div>
