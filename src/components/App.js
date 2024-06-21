@@ -21,8 +21,8 @@ const App = () => {
   }
   
   const todoAddInLi = Todos.map((value,index)=>{
-      return <><li key={index}>{value}</li>
-      <button  onClick={() =>Delete(value)}>Delete Todo</button></>
+      return <><li key={index}>{value} <button  onClick={() =>Delete(value)}>Delete Todo</button></li>
+      </>
   })
   return (
     <div>
