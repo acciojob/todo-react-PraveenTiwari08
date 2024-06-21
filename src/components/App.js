@@ -1,41 +1,41 @@
-
 import React, { useState } from "react";
 import './../styles/App.css';
 
 const App = () => {
-  const [Todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-  const inputvalue = (e) => {
+  const handleInputChange = (e) => {
     setInputValue(e.target.value);
   }
 
-  const addTodo = () =>{
-    setTodos([...Todos,inputValue])
-    setInputValue("");
+  const addTodo = () => {
+    if (inputValue.trim()) {
+      setTodos([...todos, inputValue]);
+      setInputValue("");
+    }
   }
 
-  const Delete = (itemToDelete) => {
-     const deleteTodo = Todos.filter((item)=> item !== itemToDelete);
-     setTodos(deleteTodo);
+  const deleteTodo = (todoToDelete) => {
+    const updatedTodos = todos.filter((todo) => todo !== todoToDelete);
+    setTodos(updatedTodos);
   }
   
-  const todoAddInLi = Todos.map((value,index)=>{
-      return <li key={index}>{value} <button  onClick={() =>Delete(value)}>Delete</button></li>
-  })
-
   return (
     <div>
-       <h1>todo-list</h1>
-       <input value={inputValue} onChange={inputvalue}/>
-       <button onClick={addTodo}>Add Todo</button>
-       <ul>
-        <li>
-          {todoAddInLi}
-        </li>
-       </ul>
+      <h1>To-Do List</h1>
+      <input value={inputValue} onChange={handleInputChange} />
+      <button onClick={addTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => deleteTodo(todo)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
