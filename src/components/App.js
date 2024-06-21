@@ -16,8 +16,7 @@ const App = () => {
   }
 
   const Delete = () =>{
-    const Remove = Todos.splice(index,1);
-    setTodos([...Todos]);
+     Todos.splice(index,1);
   }
   
   const todoAddInLi = Todos.map((value,index)=>{
